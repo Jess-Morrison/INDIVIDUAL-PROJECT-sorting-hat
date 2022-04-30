@@ -2,23 +2,27 @@ const students=[
   { id:1,
     name:"Jammie",
     house: "Ravenclaw",
-    expelled:No
+    expelled:false
   },
   {id:2,
     name:"Harry",
     house: "Slytherin",
-    expelled:No
+    expelled:false
   },
 {id:3,
   name:"Kate",
   house: "Hufflepuff",
-  expelled:No
+  expelled:false
 },
-{id:3,
+{id:4,
   name:"Tim",
   house: "Gryffindor",
-  expelled:Yes
+  expelled:true
 }]
+
+const houseNames= [
+ "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
+]
 
 // UTILITY FUNCTION 
 const renderToDom= (divID, textToDom) =>{
@@ -27,33 +31,36 @@ const renderToDom= (divID, textToDom) =>{
 
 // Create sorting card 
 
-const sortCard = (array) =>{
+const sortCard = () =>{
 let domString = " " 
-domString += `<div class="card">
+ domString += `<div class="sort-card">
 <div class="card-header">
-  Featured
+  Hello and welcome to hogwarts! 
 </div>
 <div class="card-body">
-  <h5 class="card-title">Special title treatment</h5>
-  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
+  <h5 class="card-title">Please select the sort button to begin</h5>
+  <p class="card-text">Today is only the beginning! </p>
+  <a href="#" class="btn btn-primary">Sort</a>
 </div>
 </div>`
 
-renderToDom('#container',domString)
+renderToDom('#hogCardContainer',domString)
 }
 
 // Create student card 
 
-const studentInfoCard = () => {
-let domString = `<div class="card" style="width: 18rem;">
+const studentInfoCard = (array) => {
+  let domString = " "
+  for(let student of array){
+ domString += `<div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <p class="card-text1"> Student: ${student.name}</p>
+  <p class="card-text2"> House: ${student.house}</p>
 </div>
 </div>`
-
-renderToDom ('#container',domString)
+  }
+renderToDom ('#hogCardContainer',domString);
 }
 
 // Create Sort Form
@@ -86,7 +93,9 @@ renderToDom('#formContainer',domString)
 
 // Function to Start Application
 const startApp = () =>{
-sortCard(students);
+sortCard();
+form();
+studentInfoCard(students);
 };
 
 startApp()
