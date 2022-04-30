@@ -40,11 +40,11 @@ let domString = " "
 <div class="card-body">
   <h5 class="card-title">Please select the sort button to begin</h5>
   <p class="card-text">Today is only the beginning! </p>
-  <a href="#" class="btn btn-primary">Sort</a>
+ <a href="#" class="btn btn-primary">Start</a>
 </div>
 </div>`
 
-renderToDom('#hogCardContainer',domString)
+renderToDom('#introContainer',domString)
 }
 
 // Create student card 
@@ -63,29 +63,76 @@ const studentInfoCard = (array) => {
 renderToDom ('#hogCardContainer',domString);
 }
 
+// Create Voldy House Card
+
+const voldyCard = (array) =>{
+let voldyDomString = " "
+for(let former of array){
+  if(former.expelled === true){
+voldyDomString += `<div class="card" style="width: 18rem;">
+<img src="..." class="card-img-top" alt="...">
+<div class="card-body">
+<p class="card-text1"> Student: ${former.name}</p>
+<p class="card-text3"> Expelled: ${former.expelled}  </p>
+<p class="card-text2"> Former House: ${former.house}</p>
+</div>
+</div>`
+}
+}
+renderToDom ('#voldyContainer',voldyDomString);
+}
+
 // Create Sort Form
 
 const form = () => {
   let domString = `<form>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <label for="exampleInputEmail1" class="form-label">Student Name:</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+    <div id="emailHelp" class="form-text">A name is needed in order to be sorted!</div>
+    <button type="submit" class="btn btn-primary">Sort</button>
+    </div>
 </form>`
 
 renderToDom('#formContainer',domString)
 }
 
+// Event Listeners 
+// Buttons
+
+const sortButtons = () => {
+  document.querySelector('#buttons').addEventListener("click",(e) =>{
+    if(e.target.id === "ravenclaw"){
+      const ravenclaw = students.filter((student)=>student.house === "Ravenclaw")
+      studentInfoCard(ravenclaw)
+    }
+    if(e.target.id === "gryffindor"){
+      const gryffindor = students.filter((student)=>student.house === "Gryffindor")
+      studentInfoCard(gryffindor)
+    }
+    if(e.target.id === "hufflepuff"){
+      const hufflepuff = students.filter((student)=>student.house === "Hufflepuff")
+      studentInfoCard(hufflepuff)
+    }
+    if(e.target.id === "slytherin"){
+      const slytherin = students.filter((student)=>student.house === "Slytherin")
+      studentInfoCard(slytherin)
+    }
+    if(e.target.id === "expelled"){
+      const expelled = students.filter((student)=>student.expelled === true)
+      studentInfoCard(expelled)
+    }
+    if(e.target.id === "all"){
+      const all= students.filter((student)=>student.house !== "all")
+      studentInfoCard(all)
+    }
+    
+  });
+
+
+
+  
+}
 
 
 
@@ -93,9 +140,11 @@ renderToDom('#formContainer',domString)
 
 // Function to Start Application
 const startApp = () =>{
+studentInfoCard(students);
+voldyCard(students);
 sortCard();
 form();
-studentInfoCard(students);
+sortButtons();
 };
 
 startApp()
