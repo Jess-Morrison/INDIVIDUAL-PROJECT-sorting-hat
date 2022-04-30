@@ -84,6 +84,10 @@ voldyDomString += `<div class="card" style="width: 18rem;">
 renderToDom ('#voldyContainer',voldyDomString);
 }
 
+const hide = () => {
+  document.getElementById('formContainer').style.display ="none"
+}
+
 const sort = () => {
   document.getElementById('formContainer').style.display = "";
 }
@@ -102,9 +106,7 @@ const form = () => {
 
 renderToDom('#formContainer',domString)
 }
-// const sort = () => {
-//   document.getElementById('formContainer').style.display = " ";
-// }
+
 
 // Event Listeners 
 // Make Sort Buttons
@@ -147,9 +149,7 @@ const eventListener= () => {
 
   
 }
-// const sort = () => {
-//   document.getElementById('#formContainer').style.display = "none";
-// }
+
 
 
 
@@ -159,6 +159,7 @@ const startApp = () =>{
   studentInfoCard(students);
   voldyCard(students);
   welcomeCard();
+  hide()
   // sort();
   form();
   eventListener();
