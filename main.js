@@ -31,7 +31,7 @@ const renderToDom= (divID, textToDom) =>{
 
 // Create sorting card 
 
-const sortCard = () =>{
+const welcomeCard = () =>{
 let domString = " " 
  domString += `<div class="sort-card">
 <div class="card-header">
@@ -40,12 +40,14 @@ let domString = " "
 <div class="card-body">
   <h5 class="card-title">Please select the sort button to begin</h5>
   <p class="card-text">Today is only the beginning! </p>
- <a href="#" class="btn btn-primary">Start</a>
+ <a  id= "sort" onclick="sort()" href="#" class="btn btn-primary">Start</a>
 </div>
 </div>`
 
 renderToDom('#introContainer',domString)
+
 }
+
 
 // Create student card 
 
@@ -82,6 +84,10 @@ voldyDomString += `<div class="card" style="width: 18rem;">
 renderToDom ('#voldyContainer',voldyDomString);
 }
 
+const sort = () => {
+  document.getElementById('formContainer').style.display = "";
+}
+
 // Create Sort Form
 
 const form = () => {
@@ -96,11 +102,15 @@ const form = () => {
 
 renderToDom('#formContainer',domString)
 }
+// const sort = () => {
+//   document.getElementById('formContainer').style.display = " ";
+// }
 
 // Event Listeners 
-// Buttons
+// Make Sort Buttons
 
-const sortButtons = () => {
+const eventListener= () => {
+
   document.querySelector('#buttons').addEventListener("click",(e) =>{
     if(e.target.id === "ravenclaw"){
       const ravenclaw = students.filter((student)=>student.house === "Ravenclaw")
@@ -129,22 +139,29 @@ const sortButtons = () => {
     
   });
 
+  // Show Sort form 
 
+  // const sort = () => {
+  //   document.getElementById('formContainer').style.display = "none";
+  // }
 
   
 }
-
+// const sort = () => {
+//   document.getElementById('#formContainer').style.display = "none";
+// }
 
 
 
 
 // Function to Start Application
 const startApp = () =>{
-studentInfoCard(students);
-voldyCard(students);
-sortCard();
-form();
-sortButtons();
+  studentInfoCard(students);
+  voldyCard(students);
+  welcomeCard();
+  // sort();
+  form();
+  eventListener();
 };
 
 startApp()
