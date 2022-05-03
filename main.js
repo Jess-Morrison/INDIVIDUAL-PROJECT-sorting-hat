@@ -57,13 +57,16 @@ renderToDom('#introContainer',domString)
 const studentInfoCard = (array) => {
   let domString = " "
   for(let student of array){
+    if(student.expelled === false){
  domString += `<div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
   <p class="card-text1"> Student: ${student.name}</p>
   <p class="card-text2"> House: ${student.house}</p>
+  <button type="button" id="expel" class="btn btn-danger">Expel!</button>
 </div>
 </div>`
+  }
   }
 renderToDom ('#hogCardContainer',domString);
 }
@@ -147,8 +150,20 @@ const eventListener= () => {
       const all= students.filter((student)=>student.house !== "all")
       studentInfoCard(all)
     }
+    // if(e.target.id === "expel"){
+    //   const expel = former.filter((former)=>former.expelled === true)
+    //   voldyCard(expel)
+    // }
     
   });
+document.querySelector('#expel').addEventListener("click", (e)=> {
+  if(e.target.id === "expel"){
+    const expel = students.push(voldyCard(former))
+  }
+})
+  
+
+
 
   // Create a function so user could input name 
 
@@ -158,9 +173,12 @@ const eventListener= () => {
     const houseNames= [
       "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
      ]
+    //  const getRandomInt = (min,max) =>{
+    //   return Math.floor(Math.random() * (max-min)+ min)
+    //  }
      let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)]
     const userName = {
-      id:1,
+      id:Math.floor(Math.random() * 10)+5,
       name: document.querySelector("#name").value,
       house: sortHouse,
       expelled: false 
