@@ -20,9 +20,12 @@ const students=[
   expelled:true
 }]
 
-const houseNames= [
- "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
-]
+// const houseNames= [
+//  "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
+// ]
+
+
+
 
 // UTILITY FUNCTION 
 const renderToDom= (divID, textToDom) =>{
@@ -84,9 +87,13 @@ voldyDomString += `<div class="card" style="width: 18rem;">
 renderToDom ('#voldyContainer',voldyDomString);
 }
 
+// Have sort form hidden when user arrives on the page 
+
 const hide = () => {
   document.getElementById('formContainer').style.display ="none"
 }
+
+// Show sort form once the sort button is clicked 
 
 const sort = () => {
   document.getElementById('formContainer').style.display = "";
@@ -98,14 +105,16 @@ const form = () => {
   let domString = `<form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Student Name:</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">A name is needed in order to be sorted!</div>
-    <button type="submit" class="btn btn-primary">Sort</button>
+    <input type="name" class="form-control" id="name" id="exampleInputEmail1" aria-describedby="name">
+    <div id="Help" class="form-text">A name is needed in order to be sorted!</div>
+    <button type="submit" id="sort" class="btn btn-primary">Sort</button>
     </div>
 </form>`
 
 renderToDom('#formContainer',domString)
 }
+
+
 
 
 // Event Listeners 
@@ -141,10 +150,27 @@ const eventListener= () => {
     
   });
 
-  // Show Sort form 
+  // Create a function so user could input name 
 
-  // const sort = () => {
-  //   document.getElementById('formContainer').style.display = "none";
+  const form= document.querySelector('form');
+  form.addEventListener('Sort',(e) => {
+    e.preventDefault();
+    const houseNames= [
+      "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
+     ]
+     let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)]
+    const userName = {
+      student: document.querySelector("#name").value,
+      house: sortHouse.value
+    }
+    
+    students.push(userName);
+    studentInfoCard(students)
+    form.reset();
+  })
+
+  // const userName = () => {
+
   // }
 
   
