@@ -153,17 +153,19 @@ const eventListener= () => {
   // Create a function so user could input name 
 
   const form= document.querySelector('form');
-  form.addEventListener('Sort',(e) => {
+  form.addEventListener('submit',(e) => {
     e.preventDefault();
     const houseNames= [
       "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
      ]
      let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)]
     const userName = {
-      student: document.querySelector("#name").value,
-      house: sortHouse.value
+      id:1,
+      name: document.querySelector("#name").value,
+      house: sortHouse,
+      expelled: false 
     }
-    
+    console.log(userName)
     students.push(userName);
     studentInfoCard(students)
     form.reset();
