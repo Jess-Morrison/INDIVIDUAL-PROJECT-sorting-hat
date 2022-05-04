@@ -20,10 +20,9 @@ const students=[
   expelled:true
 }]
 
-// const houseNames= [
-//  "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
-// ]
+// Create an array to house the expelled students 
 
+const badArmy=[]
 
 
 
@@ -63,7 +62,7 @@ const studentInfoCard = (array) => {
 <div class="card-body">
   <p class="card-text1"> Student: ${student.name}</p>
   <p class="card-text2"> House: ${student.house}</p>
-  <button type="button" id="expel" class="btn btn-danger">Expel!</button>
+  <button type="button" id="delete--${student.id}" class="btn btn-danger">Expel!</button>
 </div>
 </div>`
   }
@@ -156,9 +155,33 @@ const eventListener= () => {
     // }
     
   });
-document.querySelector('#expel').addEventListener("click", (e)=> {
-  if(e.target.id === "expel"){
-    const expel = students.push(voldyCard(former))
+
+document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
+  if(e.target.id){
+    const[method,id] =e.target.id.split("--");
+    
+    const index =students.findIndex((taco) => taco.id === parseInt(id));
+
+    if(e.target.id.includes('delete')){
+      badArmy.push(...students.splice(index,1));
+      // studentInfoCard(students)
+    }
+    if(students.expelled !== true){
+      studentInfoCard(students)
+    }
+    console.log(badArmy)
+
+  // const removeFalse = (array) =>{
+  //   students.pop()
+  //   badArmy.push(expelled === true)
+  //   console.log(students)
+  // }
+  // removeFalse(badArmy)
+    // if(badArmy.expelled === true){
+    //   voldyCard(badArmy)
+    // }
+    
+    
   }
 })
   
@@ -202,8 +225,8 @@ document.querySelector('#expel').addEventListener("click", (e)=> {
 
 // Function to Start Application
 const startApp = () =>{
-  studentInfoCard(students);
-  voldyCard(students);
+  studentInfoCard(students,badArmy);
+  voldyCard(students,badArmy);
   welcomeCard();
   hide()
   // sort();
