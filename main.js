@@ -20,10 +20,9 @@ const students=[
   expelled:true
 }]
 
-// const houseNames= [
-//  "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
-// ]
+// Create an array to house the expelled students 
 
+const badArmy=[]
 
 
 
@@ -57,13 +56,28 @@ renderToDom('#introContainer',domString)
 const studentInfoCard = (array) => {
   let domString = " "
   for(let student of array){
+    if(student.expelled === false)
+    {
  domString += `<div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
   <p class="card-text1"> Student: ${student.name}</p>
   <p class="card-text2"> House: ${student.house}</p>
+  <button type="button" id="delete--${student.id}" class="btn btn-danger">Expel!</button>
 </div>
 </div>`
+  }
+  if(student.expelled === true || false)
+  {
+domString += `<div class="card" style="width: 18rem;">
+<img src="..." class="card-img-top" alt="...">
+<div class="card-body">
+<p class="card-text1"> Student: ${student.name}</p>
+<p class="card-text3" id"${student.expelled} "> Expelled: Yes, and can never return!</p>
+<p class="card-text2"> Former House: ${student.house}</p>
+</div>
+</div>`
+}
   }
 renderToDom ('#hogCardContainer',domString);
 }
@@ -73,12 +87,14 @@ renderToDom ('#hogCardContainer',domString);
 const voldyCard = (array) =>{
 let voldyDomString = " "
 for(let former of array){
-  if(former.expelled === true){
+  console.log(former)
+  if(former.expelled === false || true )
+  {
 voldyDomString += `<div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
 <p class="card-text1"> Student: ${former.name}</p>
-<p class="card-text3"> Expelled: ${former.expelled}  </p>
+<p class="card-text3" id"${former.expelled} "> Expelled: Yes, and can never return!</p>
 <p class="card-text2"> Former House: ${former.house}</p>
 </div>
 </div>`
@@ -105,7 +121,7 @@ const form = () => {
   let domString = `<form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Student Name:</label>
-    <input type="name" class="form-control" id="name" id="exampleInputEmail1" aria-describedby="name">
+    <input type="name" class="form-control" id="name" id="exampleInputEmail1" aria-describedby="name" required>
     <div id="Help" class="form-text">A name is needed in order to be sorted!</div>
     <button type="submit" id="sort" class="btn btn-primary">Sort</button>
     </div>
@@ -140,15 +156,64 @@ const eventListener= () => {
       studentInfoCard(slytherin)
     }
     if(e.target.id === "expelled"){
-      const expelled = students.filter((student)=>student.expelled === true)
+      let expelled = students.filter((student)=>student.expelled === false || true )
       studentInfoCard(expelled)
     }
+    if(e.target.id === "expelled") {
+      let expelled = students.filter((student)=>student.expelled ===  true || false  )
+      studentInfoCard(expelled)
+    }
+
     if(e.target.id === "all"){
       const all= students.filter((student)=>student.house !== "all")
       studentInfoCard(all)
     }
+    // if(e.target.id === "expel"){
+    //   const expel = former.filter((former)=>former.expelled === true)
+    //   voldyCard(expel)
+    // }
     
   });
+
+document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
+  
+    const[method,student] =e.target.id.split("--");
+    
+    const index =students.findIndex((taco) => taco.id === parseInt(student));
+
+    if(e.target.id.includes('delete')){
+      badArmy.push(...students.splice(index,1));
+       voldyCard(badArmy)
+      studentInfoCard(students)
+        } 
+        
+      
+    //  expelledStudent=  expelled !==false
+    //  voldyCard(badArmy)
+      // console.log(expelledStudent)
+    
+    // if(students.expelled !== true){
+    //   studentInfoCard(students)
+    // }
+    
+    
+    
+  // const removeFalse = (array) =>{
+  //   students.pop()
+  //   badArmy.push(expelled === true)
+  //   console.log(students)
+  // }
+  // removeFalse(badArmy)
+    // if(badArmy.expelled === true){
+    //   voldyCard(badArmy)
+    // }
+    
+    
+  
+})
+  
+
+
 
   // Create a function so user could input name 
 
@@ -158,9 +223,12 @@ const eventListener= () => {
     const houseNames= [
       "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
      ]
+    //  const getRandomInt = (min,max) =>{
+    //   return Math.floor(Math.random() * (max-min)+ min)
+    //  }
      let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)]
     const userName = {
-      id:1,
+      id:Math.floor(Math.random() * 10)+5,
       name: document.querySelector("#name").value,
       house: sortHouse,
       expelled: false 
@@ -185,7 +253,7 @@ const eventListener= () => {
 // Function to Start Application
 const startApp = () =>{
   studentInfoCard(students);
-  voldyCard(students);
+  voldyCard(badArmy);
   welcomeCard();
   hide()
   // sort();
