@@ -56,7 +56,8 @@ renderToDom('#introContainer',domString)
 const studentInfoCard = (array) => {
   let domString = " "
   for(let student of array){
-    if(student.expelled === false){
+    if(student.expelled === false)
+    {
  domString += `<div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
@@ -66,6 +67,17 @@ const studentInfoCard = (array) => {
 </div>
 </div>`
   }
+  if(student.expelled === true || false)
+  {
+domString += `<div class="card" style="width: 18rem;">
+<img src="..." class="card-img-top" alt="...">
+<div class="card-body">
+<p class="card-text1"> Student: ${student.name}</p>
+<p class="card-text3" id"${student.expelled} "> Expelled: Yes, and can never return!</p>
+<p class="card-text2"> Former House: ${student.house}</p>
+</div>
+</div>`
+}
   }
 renderToDom ('#hogCardContainer',domString);
 }
@@ -75,12 +87,14 @@ renderToDom ('#hogCardContainer',domString);
 const voldyCard = (array) =>{
 let voldyDomString = " "
 for(let former of array){
-  if(former.expelled === true){
+  console.log(former)
+  if(former.expelled === false || true )
+  {
 voldyDomString += `<div class="card" style="width: 18rem;">
 <img src="..." class="card-img-top" alt="...">
 <div class="card-body">
 <p class="card-text1"> Student: ${former.name}</p>
-<p class="card-text3"> Expelled: ${former.expelled}  </p>
+<p class="card-text3" id"${former.expelled} "> Expelled: Yes, and can never return!</p>
 <p class="card-text2"> Former House: ${former.house}</p>
 </div>
 </div>`
@@ -107,7 +121,7 @@ const form = () => {
   let domString = `<form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Student Name:</label>
-    <input type="name" class="form-control" id="name" id="exampleInputEmail1" aria-describedby="name">
+    <input type="name" class="form-control" id="name" id="exampleInputEmail1" aria-describedby="name" required>
     <div id="Help" class="form-text">A name is needed in order to be sorted!</div>
     <button type="submit" id="sort" class="btn btn-primary">Sort</button>
     </div>
@@ -142,9 +156,14 @@ const eventListener= () => {
       studentInfoCard(slytherin)
     }
     if(e.target.id === "expelled"){
-      const expelled = students.filter((student)=>student.expelled === true)
+      let expelled = students.filter((student)=>student.expelled === false || true )
       studentInfoCard(expelled)
     }
+    if(e.target.id === "expelled") {
+      let expelled = students.filter((student)=>student.expelled ===  true || false  )
+      studentInfoCard(expelled)
+    }
+
     if(e.target.id === "all"){
       const all= students.filter((student)=>student.house !== "all")
       studentInfoCard(all)
@@ -157,20 +176,28 @@ const eventListener= () => {
   });
 
 document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
-  if(e.target.id){
-    const[method,id] =e.target.id.split("--");
+  
+    const[method,student] =e.target.id.split("--");
     
-    const index =students.findIndex((taco) => taco.id === parseInt(id));
+    const index =students.findIndex((taco) => taco.id === parseInt(student));
 
     if(e.target.id.includes('delete')){
       badArmy.push(...students.splice(index,1));
-      // studentInfoCard(students)
-    }
-    if(students.expelled !== true){
+       voldyCard(badArmy)
       studentInfoCard(students)
-    }
-    console.log(badArmy)
-
+        } 
+        
+      
+    //  expelledStudent=  expelled !==false
+    //  voldyCard(badArmy)
+      // console.log(expelledStudent)
+    
+    // if(students.expelled !== true){
+    //   studentInfoCard(students)
+    // }
+    
+    
+    
   // const removeFalse = (array) =>{
   //   students.pop()
   //   badArmy.push(expelled === true)
@@ -182,7 +209,7 @@ document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
     // }
     
     
-  }
+  
 })
   
 
@@ -225,8 +252,8 @@ document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
 
 // Function to Start Application
 const startApp = () =>{
-  studentInfoCard(students,badArmy);
-  voldyCard(students,badArmy);
+  studentInfoCard(students);
+  voldyCard(badArmy);
   welcomeCard();
   hide()
   // sort();
