@@ -20,8 +20,8 @@ const students=[
 {id:4,
   name:"Tim",
   house: "Gryffindor",
-  expelled:true,
-  image:"darkcloud.jpg"
+  expelled:false,
+  image:"griff.jpg"
 }]
 
 // Create an array to house the expelled students 
@@ -55,7 +55,8 @@ let domString = " "
 <div class="card-body">
   <h5 class="card-title">Please select the sort button to begin</h5>
   <p class="card-text">Today is only the beginning! </p>
- <a  id= "sort" onclick="sort()" href="#" class="btn btn-primary">Start</a>
+ <a  id= "start" onclick="sort()" href="#" class="btn btn-primary">Start</a>
+ 
 </div>
 </div>`
 
@@ -69,7 +70,7 @@ renderToDom('#introContainer',domString)
 const studentInfoCard = (array) => {
   let domString = " "
   for(let student of array){
-    if(student.expelled === false)
+    if(student.expelled === false || true)
     {
  domString += `<div class="card" style="width: 18rem;">
 <img src="${student.image}" class="card-img-top" alt="photo of house">
@@ -80,17 +81,18 @@ const studentInfoCard = (array) => {
 </div>
 </div>`
   }
-  if(student.expelled === true || false)
-  {
-domString += `<div class="card" style="width: 18rem;">
-<img src="${student.image}" class="card-img-top" alt="...">
-<div class="card-body">
-<p class="card-text1"> Student: ${student.name}</p>
-<p class="card-text3" id"${student.expelled} "> Expelled: Yes, and can never return!</p>
-<p class="card-text2"> Former House: ${student.house}</p>
-</div>
-</div>`
-}
+  
+//   if(student.expelled === true )
+//   {
+// domString += `<div class="card" style="width: 18rem;">
+// <img src="${student.image}" class="card-img-top" alt="...">
+// <div class="card-body">
+// <p class="card-text1"> Student: ${student.name}</p>
+// <p class="card-text3" id"${student.expelled} "> Expelled: Yes, and can never return!</p>
+// <p class="card-text2"> Former House: ${student.house}</p>
+// </div>
+// </div>`
+// }
   }
 renderToDom ('#hogCardContainer',domString);
 }
@@ -262,6 +264,12 @@ document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
   // const userName = () => {
 
   // }
+
+  // const placeBtn =document.getElementById('#buttonContainer')
+  
+  // const button = ()=>{
+  //  if(students.expelled === false){
+   
 
   
 }

@@ -1,3 +1,47 @@
 body{
-  background-color: azure;
+  background-color: antiquewhite;
+}
+#introContainer{
+  margin: 20px;
+}
+
+
+.card-header{
+  text-align: center;
+}
+
+.card-body{
+  text-align: center;
+}
+
+#buttons{
+  text-align: center;
+  font-size: 24px;
+  margin: 20px;
+}
+
+#start{
+background-color: brown;
+}
+
+#sort{
+  background-color: brown; 
+}
+
+#hogCardContainer{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+#formContainer{
+  text-align: center;
+  margin: 20px;
+}
+
+
+#voldyContainer{
+ display: flex ;
+ justify-content: center;
+ margin: 20px;
 }
