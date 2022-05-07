@@ -60,6 +60,7 @@ border-color: black;
   border-bottom-style: double;
   padding: 20px;
   text-align: center;
+  justify-content: center;
 }
 
 #formContainer{
