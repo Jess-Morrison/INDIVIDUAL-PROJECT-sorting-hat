@@ -5,8 +5,13 @@ body{
   margin: 20px;
   font-family: 'Water Brush', cursive;
   font-size: 50px;
+  background-color: whitesmoke;
 }
 
+.sort-card{
+  border: 12px;
+  border-color: brown;
+}
 
 .card-header{
   text-align: center;
