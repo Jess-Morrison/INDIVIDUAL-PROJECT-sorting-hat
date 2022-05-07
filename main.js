@@ -2,27 +2,40 @@ const students=[
   { id:1,
     name:"Jammie",
     house: "Ravenclaw",
-    expelled:false
+    expelled:false,
+    image: "raven.jpg"
   },
   {id:2,
     name:"Harry",
     house: "Slytherin",
-    expelled:false
+    expelled:false,
+    image: "sly.jpg"
   },
 {id:3,
   name:"Kate",
   house: "Hufflepuff",
-  expelled:false
+  expelled:false,
+  image: "huff.jpg"
 },
 {id:4,
   name:"Tim",
   house: "Gryffindor",
-  expelled:true
+  expelled:false,
+  image:"griff.jpg"
 }]
 
 // Create an array to house the expelled students 
 
 const badArmy=[]
+
+// const images = () =>{
+//   document.getElementById("imgContainer").appendChild(elem);
+
+// }
+
+// const img =[{
+//   Ravenclaw: img
+// }]
 
 
 
@@ -42,7 +55,8 @@ let domString = " "
 <div class="card-body">
   <h5 class="card-title">Please select the sort button to begin</h5>
   <p class="card-text">Today is only the beginning! </p>
- <a  id= "sort" onclick="sort()" href="#" class="btn btn-primary">Start</a>
+ <a  id= "start" onclick="sort()" href="#" class="btn btn-primary">Start</a>
+ 
 </div>
 </div>`
 
@@ -56,10 +70,10 @@ renderToDom('#introContainer',domString)
 const studentInfoCard = (array) => {
   let domString = " "
   for(let student of array){
-    if(student.expelled === false)
+    if(student.expelled === false || true)
     {
  domString += `<div class="card" style="width: 18rem;">
-<img src="..." class="card-img-top" alt="...">
+<img src="${student.image}" class="card-img-top" alt="photo of house">
 <div class="card-body">
   <p class="card-text1"> Student: ${student.name}</p>
   <p class="card-text2"> House: ${student.house}</p>
@@ -67,17 +81,7 @@ const studentInfoCard = (array) => {
 </div>
 </div>`
   }
-  if(student.expelled === true || false)
-  {
-domString += `<div class="card" style="width: 18rem;">
-<img src="..." class="card-img-top" alt="...">
-<div class="card-body">
-<p class="card-text1"> Student: ${student.name}</p>
-<p class="card-text3" id"${student.expelled} "> Expelled: Yes, and can never return!</p>
-<p class="card-text2"> Former House: ${student.house}</p>
-</div>
-</div>`
-}
+  
   }
 renderToDom ('#hogCardContainer',domString);
 }
@@ -91,7 +95,7 @@ for(let former of array){
   if(former.expelled === false || true )
   {
 voldyDomString += `<div class="card" style="width: 18rem;">
-<img src="..." class="card-img-top" alt="...">
+<img src="darkcloud.jpg" class="card-img-top" alt="photo of dark clouds">
 <div class="card-body">
 <p class="card-text1"> Student: ${former.name}</p>
 <p class="card-text3" id"${former.expelled} "> Expelled: Yes, and can never return!</p>
@@ -220,18 +224,41 @@ document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
   const form= document.querySelector('form');
   form.addEventListener('submit',(e) => {
     e.preventDefault();
+    // const changeName = () => {
+    //   if("Gryffindor" !== "griff.jpg"){
+    //    return "Gryffindor"
+        
+    //   } 
+    //   if("Hufflepuff"!=="huff.jpg"){
+    //     return "Hufflepuff"
+    //   }
+    //   if("Ravenclaw"!=="raven.jpg"){
+    //     return "Ravenclaw"
+    //   }
+    //   if("Slytherin" !=="sly.jpg"){
+    //     return "Slytherin"
+    //   }
+    // }
     const houseNames= [
-      "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
+      "Gryffindor","Hufflepuff","Ravenclaw","Slytherin"
      ]
+
+     const houseImage= [ "griff.jpg","huff.jpg","raven.jpg","sly.jpg"
+     ]
+    //  "griff.jpg","huff.jpg","raven.jpg","sly.jpg"
+    //  changeName("griff.jpg"),changeName("huff.jpg"),changeName("raven.jpg"),changeName("sly.jpg")
     //  const getRandomInt = (min,max) =>{
     //   return Math.floor(Math.random() * (max-min)+ min)
     //  }
-     let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)]
+     let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)] && houseImage [Math.floor(Math.random()* houseImage.length)]
+    //  let randomImage = houseImage [Math.floor(Math.random()*
+    //   houseImage.length)]
     const userName = {
       id:Math.floor(Math.random() * 10)+5,
       name: document.querySelector("#name").value,
       house: sortHouse,
-      expelled: false 
+      expelled: false,
+      image: sortHouse 
     }
     console.log(userName)
     students.push(userName);
@@ -242,6 +269,12 @@ document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
   // const userName = () => {
 
   // }
+
+  // const placeBtn =document.getElementById('#buttonContainer')
+  
+  // const button = ()=>{
+  //  if(students.expelled === false){
+   
 
   
 }
