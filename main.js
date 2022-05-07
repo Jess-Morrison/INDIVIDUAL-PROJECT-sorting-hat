@@ -82,17 +82,6 @@ const studentInfoCard = (array) => {
 </div>`
   }
   
-//   if(student.expelled === true )
-//   {
-// domString += `<div class="card" style="width: 18rem;">
-// <img src="${student.image}" class="card-img-top" alt="...">
-// <div class="card-body">
-// <p class="card-text1"> Student: ${student.name}</p>
-// <p class="card-text3" id"${student.expelled} "> Expelled: Yes, and can never return!</p>
-// <p class="card-text2"> Former House: ${student.house}</p>
-// </div>
-// </div>`
-// }
   }
 renderToDom ('#hogCardContainer',domString);
 }
@@ -235,25 +224,41 @@ document.querySelector('#hogCardContainer').addEventListener("click", (e)=> {
   const form= document.querySelector('form');
   form.addEventListener('submit',(e) => {
     e.preventDefault();
+    // const changeName = () => {
+    //   if("Gryffindor" !== "griff.jpg"){
+    //    return "Gryffindor"
+        
+    //   } 
+    //   if("Hufflepuff"!=="huff.jpg"){
+    //     return "Hufflepuff"
+    //   }
+    //   if("Ravenclaw"!=="raven.jpg"){
+    //     return "Ravenclaw"
+    //   }
+    //   if("Slytherin" !=="sly.jpg"){
+    //     return "Slytherin"
+    //   }
+    // }
     const houseNames= [
-      "Gryffindor", "Hufflepuff", "Ravenclaw","Slytherin"
+      "Gryffindor","Hufflepuff","Ravenclaw","Slytherin"
      ]
 
-     const houseImage= [ 
-       "griff.jpg","huff.jpg","raven.jpg","sly.jpg"
+     const houseImage= [ "griff.jpg","huff.jpg","raven.jpg","sly.jpg"
      ]
+    //  "griff.jpg","huff.jpg","raven.jpg","sly.jpg"
+    //  changeName("griff.jpg"),changeName("huff.jpg"),changeName("raven.jpg"),changeName("sly.jpg")
     //  const getRandomInt = (min,max) =>{
     //   return Math.floor(Math.random() * (max-min)+ min)
     //  }
-     let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)]
-     let randomImage = houseImage [Math.floor(Math.random()*
-      houseImage.length)]
+     let sortHouse= houseNames [Math.floor(Math.random()* houseNames.length)] && houseImage [Math.floor(Math.random()* houseImage.length)]
+    //  let randomImage = houseImage [Math.floor(Math.random()*
+    //   houseImage.length)]
     const userName = {
       id:Math.floor(Math.random() * 10)+5,
       name: document.querySelector("#name").value,
       house: sortHouse,
       expelled: false,
-      image:randomImage 
+      image: sortHouse 
     }
     console.log(userName)
     students.push(userName);
