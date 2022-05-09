@@ -1,5 +1,5 @@
 # Sorting Hat
-##Hello and thank you for viewing my Sorting Hat project 
+Hello and thank you for viewing my Sorting Hat project 
 
 Primary Features - This project allows users to be randomly selected to a Hogwarts House 
 Target Audience - Anyone who is a lover of Harry Potter 
