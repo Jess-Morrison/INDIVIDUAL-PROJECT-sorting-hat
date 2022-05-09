@@ -1,4 +1,14 @@
 # Sorting Hat
+##Hello and thank you for viewing my Sorting Hat project 
+
+Primary Features - This project allows users to be randomly selected to a Hogwarts House 
+Target Audience - Anyone who is a lover of Harry Potter 
+Purpose - This app is meant to bring joy and fun by allowing users to experience what it's like to be at Hogwarts on Sorting day 
+Getting Started - Please select the "Start" button to begin 
+Help - Please come back here for information concerning the project 
+
+
+
 
 ## Goals
 The goal of this project is to test your knowledge and to have a FUN time stretching yourself on your FIRST independent application that will become a part of your portfolio.
