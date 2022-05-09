@@ -1,5 +1,5 @@
 # Sorting Hat
-Hello and thank you for viewing my Sorting Hat project 
+Hello and thank you for viewing my Sorting Hat project!
 
 -Primary Features : This project allows users to be randomly selected to a Hogwarts House 
 -Target Audience : Anyone who is a lover of Harry Potter 
@@ -7,6 +7,10 @@ Hello and thank you for viewing my Sorting Hat project
 -Getting Started : Select the "Start" button to begin 
 -Help : Please come back here for information concerning the project 
 
+
+<img width="733" alt="Screen Shot 2022-05-08 at 10 25 26 PM" src="https://user-images.githubusercontent.com/67666661/167335542-4a81935f-643b-4cc9-ac85-ecb471bf6fa3.png">
+
+<img width="633" alt="Screen Shot 2022-05-08 at 10 27 24 PM" src="https://user-images.githubusercontent.com/67666661/167335695-5439ea6d-a6c4-40de-bef2-7aa7cf19bcc5.png">
 
 
 
