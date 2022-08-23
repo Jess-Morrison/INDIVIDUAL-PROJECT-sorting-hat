@@ -1,16 +1,24 @@
 body{
-  background-color: antiquewhite;
+  background-image:url(tan-paper.jpeg);
+  background-size:contain
 }
 #introContainer{
-  margin: 20px;
+  margin: 150px;
   font-family: 'Water Brush', cursive;
   font-size: 50px;
-  background-color: whitesmoke;
+  background-image: url(header-paper.jpeg);
+  background-repeat: no-repeat;
+  background-size: 72rem;
+  background-position: center;
 }
 
 .sort-card{
   border: 12px;
   border-color: brown;
+  border-style: solid;
+  border-color: goldenrod;
+  border-width: extra thick;
+  background-size: center
 }
 
 .card-header{
@@ -22,7 +30,7 @@ body{
 .card-body{
   text-align: center;
   font-family: 'Water Brush', cursive;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 #buttons{
@@ -45,9 +53,10 @@ border-color: black;
   background-color: brown; 
   font-family: 'Water Brush', cursive;
   font-size: 30px;
-  width: 100px;
+  width: auto;
   text-align: center;
   border-color: black;
+  height:fit-content
 }
 
 #hogCardContainer{
@@ -68,6 +77,9 @@ border-color: black;
   text-align: center;
   margin: 20px;
   font-size: 40px;
+  width: 65rem;
+  display:flex;
+  justify-content: center;
 }
 
 
@@ -88,4 +100,26 @@ border-color: black;
   width: 100%;
     height: 50vw;
     object-fit:cover;
+}
+
+#statue1{
+  width: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+}
+
+.card-img-top {
+  /* height: auto; */
+  /* width:  30rem; */
+  height: 19rem;
+}
+
+.card{
+  height:5%
+}
+
+name.form-control {
+  width:15%
 }
